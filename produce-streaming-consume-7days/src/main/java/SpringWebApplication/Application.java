@@ -1,6 +1,7 @@
 package SpringWebApplication;
 
 import java.io.IOException;
+import java.util.Collections;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -31,6 +32,8 @@ public class Application extends SpringBootServletInitializer {// for
 	// kill `lsof -i -n -P | grep TCP | grep 9095 | tr -s " " "\n" | sed -n 2p`
 	// kill `lsof -i -n -P | grep TCP | grep 4040 | tr -s " " "\n" | sed -n 2p`
 	public static void main(String[] args) throws IOException, InterruptedException {
+		SpringApplication app = new SpringApplication(Application.class);
+		app.setDefaultProperties(Collections.singletonMap("server.port", "9090"));
 		SpringApplication.run(Application.class, args);
 	}
 
